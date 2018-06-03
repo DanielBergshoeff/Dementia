@@ -1,0 +1,650 @@
+fileFormatVersion: 2
+guid: fa77be41e03004a44b314d3e6248c1c5
+timeCreated: 1527412597
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: bathroom
+    100002: bathroomCabinet
+    100004: bathroomCarpet
+    100006: bathroomMirror
+    100008: bed
+    100010: bedroom
+    100012: bedsidelLamp1
+    100014: bedsidelLamp2
+    100016: //RootNode
+    100018: bookcase
+    100020: bookcase1
+    100022: bookcase2
+    100024: bookItemCase1
+    100026: bookItemCase1 1
+    100028: bookItemCase2
+    100030: bookItemCase2 1
+    100032: bookItemCase3
+    100034: bookItemCase3 1
+    100036: bowl
+    100038: carpet
+    100040: clothingCloset1
+    100042: clothingCloset2
+    100044: clothingClosetOpen
+    100046: clothingRemindNote
+    100048: coat
+    100050: coatRack
+    100052: coffeeTable
+    100054: cruesli
+    100056: cuttingBoard
+    100058: dinnerTable
+    100060: dinnerTable2
+    100062: dinnerTableChair1
+    100064: dinnerTableChair2
+    100066: dinnerTableChair3
+    100068: dinnerTableChair4
+    100070: door1
+    100072: door2
+    100074: door3
+    100076: door4
+    100078: door5
+    100080: door6
+    100082: door7
+    100084: floor
+    100086: flowers
+    100088: fridge
+    100090: frontDoorCarpet
+    100092: hallway
+    100094: importantNumbersNote
+    100096: keys
+    100098: keysNote
+    100100: kitchen
+    100102: kitchenCounter
+    100104: kitchenCupboard1
+    100106: kitchenCupboard2
+    100108: launderyBasket
+    100110: launderyMachine
+    100112: livingRoom
+    100114: musicBox
+    100116: nightstand1
+    100118: nightstand2
+    100120: painting
+    100122: pan
+    100124: pen
+    100126: phone
+    100128: phoneBook
+    100130: phoneBookNote
+    100132: pictureFrame
+    100134: pictureFrame1
+    100136: pictureFrame2
+    100138: pictureFrame3
+    100140: pictureOfWife
+    100142: poof
+    100144: portefeuille
+    100146: portefeuilleNote
+    100148: radio
+    100150: seaCreaturesBook
+    100152: shower
+    100154: sink
+    100156: sofa1
+    100158: sofa2
+    100160: sofaChair
+    100162: sofaChair 1
+    100164: studyChair
+    100166: studyRoom
+    100168: studyTable
+    100170: studyTableOpen
+    100172: toilet
+    100174: toiletPaper
+    100176: tragicAccidentArticle
+    100178: umbrella
+    100180: umbrellaBowl
+    100182: wall1
+    100184: wall1 1
+    100186: wall1 2
+    100188: wall1 3
+    100190: wall1 4
+    100192: wall1 5
+    100194: wall2
+    100196: wall2 1
+    100198: wall2 2
+    100200: wall2 3
+    100202: wall2 4
+    100204: wall2 5
+    100206: wall3
+    100208: wall3 1
+    100210: wall3 2
+    100212: wall3 3
+    100214: wall3 4
+    100216: wall3 5
+    100218: Wall4
+    100220: wall4
+    100222: Wall4 1
+    100224: wall4 1
+    100226: wall4 2
+    100228: walls
+    100230: walls 1
+    100232: walls 2
+    100234: walls 3
+    100236: walls 4
+    100238: walls 5
+    400000: bathroom
+    400002: bathroomCabinet
+    400004: bathroomCarpet
+    400006: bathroomMirror
+    400008: bed
+    400010: bedroom
+    400012: bedsidelLamp1
+    400014: bedsidelLamp2
+    400016: //RootNode
+    400018: bookcase
+    400020: bookcase1
+    400022: bookcase2
+    400024: bookItemCase1
+    400026: bookItemCase1 1
+    400028: bookItemCase2
+    400030: bookItemCase2 1
+    400032: bookItemCase3
+    400034: bookItemCase3 1
+    400036: bowl
+    400038: carpet
+    400040: clothingCloset1
+    400042: clothingCloset2
+    400044: clothingClosetOpen
+    400046: clothingRemindNote
+    400048: coat
+    400050: coatRack
+    400052: coffeeTable
+    400054: cruesli
+    400056: cuttingBoard
+    400058: dinnerTable
+    400060: dinnerTable2
+    400062: dinnerTableChair1
+    400064: dinnerTableChair2
+    400066: dinnerTableChair3
+    400068: dinnerTableChair4
+    400070: door1
+    400072: door2
+    400074: door3
+    400076: door4
+    400078: door5
+    400080: door6
+    400082: door7
+    400084: floor
+    400086: flowers
+    400088: fridge
+    400090: frontDoorCarpet
+    400092: hallway
+    400094: importantNumbersNote
+    400096: keys
+    400098: keysNote
+    400100: kitchen
+    400102: kitchenCounter
+    400104: kitchenCupboard1
+    400106: kitchenCupboard2
+    400108: launderyBasket
+    400110: launderyMachine
+    400112: livingRoom
+    400114: musicBox
+    400116: nightstand1
+    400118: nightstand2
+    400120: painting
+    400122: pan
+    400124: pen
+    400126: phone
+    400128: phoneBook
+    400130: phoneBookNote
+    400132: pictureFrame
+    400134: pictureFrame1
+    400136: pictureFrame2
+    400138: pictureFrame3
+    400140: pictureOfWife
+    400142: poof
+    400144: portefeuille
+    400146: portefeuilleNote
+    400148: radio
+    400150: seaCreaturesBook
+    400152: shower
+    400154: sink
+    400156: sofa1
+    400158: sofa2
+    400160: sofaChair
+    400162: sofaChair 1
+    400164: studyChair
+    400166: studyRoom
+    400168: studyTable
+    400170: studyTableOpen
+    400172: toilet
+    400174: toiletPaper
+    400176: tragicAccidentArticle
+    400178: umbrella
+    400180: umbrellaBowl
+    400182: wall1
+    400184: wall1 1
+    400186: wall1 2
+    400188: wall1 3
+    400190: wall1 4
+    400192: wall1 5
+    400194: wall2
+    400196: wall2 1
+    400198: wall2 2
+    400200: wall2 3
+    400202: wall2 4
+    400204: wall2 5
+    400206: wall3
+    400208: wall3 1
+    400210: wall3 2
+    400212: wall3 3
+    400214: wall3 4
+    400216: wall3 5
+    400218: Wall4
+    400220: wall4
+    400222: Wall4 1
+    400224: wall4 1
+    400226: wall4 2
+    400228: walls
+    400230: walls 1
+    400232: walls 2
+    400234: walls 3
+    400236: walls 4
+    400238: walls 5
+    2100000: lambert1
+    2300000: bathroomCabinet
+    2300002: bathroomCarpet
+    2300004: bathroomMirror
+    2300006: bed
+    2300008: bedsidelLamp1
+    2300010: bedsidelLamp2
+    2300012: bookcase
+    2300014: bookcase1
+    2300016: bookcase2
+    2300018: bookItemCase1
+    2300020: bookItemCase1 1
+    2300022: bookItemCase2
+    2300024: bookItemCase2 1
+    2300026: bookItemCase3
+    2300028: bookItemCase3 1
+    2300030: bowl
+    2300032: carpet
+    2300034: clothingCloset1
+    2300036: clothingCloset2
+    2300038: clothingClosetOpen
+    2300040: clothingRemindNote
+    2300042: coat
+    2300044: coatRack
+    2300046: coffeeTable
+    2300048: cruesli
+    2300050: cuttingBoard
+    2300052: dinnerTable
+    2300054: dinnerTable2
+    2300056: dinnerTableChair1
+    2300058: dinnerTableChair2
+    2300060: dinnerTableChair3
+    2300062: dinnerTableChair4
+    2300064: door1
+    2300066: door2
+    2300068: door3
+    2300070: door4
+    2300072: door5
+    2300074: door6
+    2300076: door7
+    2300078: floor
+    2300080: flowers
+    2300082: fridge
+    2300084: frontDoorCarpet
+    2300086: importantNumbersNote
+    2300088: keys
+    2300090: keysNote
+    2300092: kitchenCounter
+    2300094: kitchenCupboard1
+    2300096: kitchenCupboard2
+    2300098: launderyBasket
+    2300100: launderyMachine
+    2300102: musicBox
+    2300104: nightstand1
+    2300106: nightstand2
+    2300108: painting
+    2300110: pan
+    2300112: pen
+    2300114: phone
+    2300116: phoneBook
+    2300118: phoneBookNote
+    2300120: pictureFrame
+    2300122: pictureFrame1
+    2300124: pictureFrame2
+    2300126: pictureFrame3
+    2300128: pictureOfWife
+    2300130: poof
+    2300132: portefeuille
+    2300134: portefeuilleNote
+    2300136: radio
+    2300138: seaCreaturesBook
+    2300140: shower
+    2300142: sink
+    2300144: sofa1
+    2300146: sofa2
+    2300148: sofaChair
+    2300150: sofaChair 1
+    2300152: studyChair
+    2300154: studyTable
+    2300156: studyTableOpen
+    2300158: toilet
+    2300160: toiletPaper
+    2300162: tragicAccidentArticle
+    2300164: umbrella
+    2300166: umbrellaBowl
+    2300168: wall1
+    2300170: wall1 1
+    2300172: wall1 2
+    2300174: wall1 3
+    2300176: wall1 4
+    2300178: wall1 5
+    2300180: wall2
+    2300182: wall2 1
+    2300184: wall2 2
+    2300186: wall2 3
+    2300188: wall2 4
+    2300190: wall2 5
+    2300192: wall3
+    2300194: wall3 1
+    2300196: wall3 2
+    2300198: wall3 3
+    2300200: wall3 4
+    2300202: wall3 5
+    2300204: Wall4
+    2300206: wall4
+    2300208: Wall4 1
+    2300210: wall4 1
+    2300212: wall4 2
+    3300000: bathroomCabinet
+    3300002: bathroomCarpet
+    3300004: bathroomMirror
+    3300006: bed
+    3300008: bedsidelLamp1
+    3300010: bedsidelLamp2
+    3300012: bookcase
+    3300014: bookcase1
+    3300016: bookcase2
+    3300018: bookItemCase1
+    3300020: bookItemCase1 1
+    3300022: bookItemCase2
+    3300024: bookItemCase2 1
+    3300026: bookItemCase3
+    3300028: bookItemCase3 1
+    3300030: bowl
+    3300032: carpet
+    3300034: clothingCloset1
+    3300036: clothingCloset2
+    3300038: clothingClosetOpen
+    3300040: clothingRemindNote
+    3300042: coat
+    3300044: coatRack
+    3300046: coffeeTable
+    3300048: cruesli
+    3300050: cuttingBoard
+    3300052: dinnerTable
+    3300054: dinnerTable2
+    3300056: dinnerTableChair1
+    3300058: dinnerTableChair2
+    3300060: dinnerTableChair3
+    3300062: dinnerTableChair4
+    3300064: door1
+    3300066: door2
+    3300068: door3
+    3300070: door4
+    3300072: door5
+    3300074: door6
+    3300076: door7
+    3300078: floor
+    3300080: flowers
+    3300082: fridge
+    3300084: frontDoorCarpet
+    3300086: importantNumbersNote
+    3300088: keys
+    3300090: keysNote
+    3300092: kitchenCounter
+    3300094: kitchenCupboard1
+    3300096: kitchenCupboard2
+    3300098: launderyBasket
+    3300100: launderyMachine
+    3300102: musicBox
+    3300104: nightstand1
+    3300106: nightstand2
+    3300108: painting
+    3300110: pan
+    3300112: pen
+    3300114: phone
+    3300116: phoneBook
+    3300118: phoneBookNote
+    3300120: pictureFrame
+    3300122: pictureFrame1
+    3300124: pictureFrame2
+    3300126: pictureFrame3
+    3300128: pictureOfWife
+    3300130: poof
+    3300132: portefeuille
+    3300134: portefeuilleNote
+    3300136: radio
+    3300138: seaCreaturesBook
+    3300140: shower
+    3300142: sink
+    3300144: sofa1
+    3300146: sofa2
+    3300148: sofaChair
+    3300150: sofaChair 1
+    3300152: studyChair
+    3300154: studyTable
+    3300156: studyTableOpen
+    3300158: toilet
+    3300160: toiletPaper
+    3300162: tragicAccidentArticle
+    3300164: umbrella
+    3300166: umbrellaBowl
+    3300168: wall1
+    3300170: wall1 1
+    3300172: wall1 2
+    3300174: wall1 3
+    3300176: wall1 4
+    3300178: wall1 5
+    3300180: wall2
+    3300182: wall2 1
+    3300184: wall2 2
+    3300186: wall2 3
+    3300188: wall2 4
+    3300190: wall2 5
+    3300192: wall3
+    3300194: wall3 1
+    3300196: wall3 2
+    3300198: wall3 3
+    3300200: wall3 4
+    3300202: wall3 5
+    3300204: Wall4
+    3300206: wall4
+    3300208: Wall4 1
+    3300210: wall4 1
+    3300212: wall4 2
+    4300000: floor
+    4300002: wall1
+    4300004: wall2
+    4300006: wall3
+    4300008: Wall4
+    4300010: clothingClosetOpen
+    4300012: nightstand1
+    4300014: nightstand2
+    4300016: pictureOfWife
+    4300018: bedsidelLamp1
+    4300020: bedsidelLamp2
+    4300022: bed
+    4300024: clothingCloset1
+    4300026: clothingCloset2
+    4300028: keys
+    4300030: keysNote
+    4300032: portefeuille
+    4300034: portefeuilleNote
+    4300036: phoneBookNote
+    4300038: pen
+    4300040: wall1
+    4300042: wall2
+    4300044: wall3
+    4300046: Wall4
+    4300048: kitchenCupboard1
+    4300050: kitchenCupboard2
+    4300052: fridge
+    4300054: pan
+    4300056: kitchenCounter
+    4300058: cruesli
+    4300060: cuttingBoard
+    4300062: bowl
+    4300064: wall1
+    4300066: wall2
+    4300068: wall3
+    4300070: wall4
+    4300072: umbrellaBowl
+    4300074: umbrella
+    4300076: pictureFrame1
+    4300078: pictureFrame2
+    4300080: pictureFrame3
+    4300082: frontDoorCarpet
+    4300084: coatRack
+    4300086: coat
+    4300088: wall1
+    4300090: wall2
+    4300092: wall3
+    4300094: wall4
+    4300096: toilet
+    4300098: shower
+    4300100: toiletPaper
+    4300102: bathroomCarpet
+    4300104: sink
+    4300106: bathroomCabinet
+    4300108: bathroomMirror
+    4300110: launderyBasket
+    4300112: launderyMachine
+    4300114: clothingRemindNote
+    4300116: wall1
+    4300118: wall2
+    4300120: wall3
+    4300122: wall4
+    4300124: sofa1
+    4300126: sofa2
+    4300128: sofaChair
+    4300130: coffeeTable
+    4300132: dinnerTable
+    4300134: dinnerTableChair1
+    4300136: dinnerTableChair2
+    4300138: dinnerTableChair3
+    4300140: dinnerTableChair4
+    4300142: bookcase
+    4300144: painting
+    4300146: pictureFrame
+    4300148: bookItemCase1
+    4300150: bookItemCase2
+    4300152: bookItemCase3
+    4300154: dinnerTable2
+    4300156: flowers
+    4300158: wall1
+    4300160: wall2
+    4300162: wall3
+    4300164: studyTable
+    4300166: carpet
+    4300168: studyChair
+    4300170: bookcase1
+    4300172: bookcase2
+    4300174: sofaChair
+    4300176: seaCreaturesBook
+    4300178: poof
+    4300180: bookItemCase1
+    4300182: bookItemCase2
+    4300184: bookItemCase3
+    4300186: studyTableOpen
+    4300188: tragicAccidentArticle
+    4300190: importantNumbersNote
+    4300192: musicBox
+    4300194: door1
+    4300196: door2
+    4300198: door3
+    4300200: door4
+    4300202: door5
+    4300204: door6
+    4300206: door7
+    4300208: phoneBook
+    4300210: radio
+    4300212: phone
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
