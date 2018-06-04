@@ -27,13 +27,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _DissolveSize: 16
+    - _DissolveSize: 0
     - _DissolveY: 0
     - _Glossiness: 0.5
     - _Metallic: 0
-    - _SliceAmount: 8
+    - _SliceAmount: 0
     - _StartingY: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorEmission: {r: 1, g: 1, b: 1, a: 1}
-    - _StartingVector: {r: -3.8916824, g: 2.0876746, b: -1.0823859, a: 0}
+    - _StartingVector: {r: 5.4312234, g: 2.2631717, b: 1.8299508, a: 0}

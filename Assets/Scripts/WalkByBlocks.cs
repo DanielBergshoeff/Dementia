@@ -48,6 +48,7 @@ public class WalkByBlocks : MonoBehaviour {
     private Camera cam;
 
     private bool playMemory;
+    private bool stopMemory;
 
     private GameObject currentWorld;
 
@@ -82,10 +83,11 @@ public class WalkByBlocks : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (playMemory == true)
+        if (playMemory == true && !stopMemory)
         {
             if(blocks.Length <= currentBlock)
             {
+                stopMemory = true;
                 StopMemory(true);
             }
             else{

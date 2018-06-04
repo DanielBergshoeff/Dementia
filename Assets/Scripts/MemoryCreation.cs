@@ -21,6 +21,8 @@ public class MemoryCreation : MonoBehaviour {
     public bool holdingLeft = false;
     public bool holdingRight = false;
 
+    public int memoryTestInt;
+
     private GameObject itemHoldingLeft;
     private GameObject itemHoldingRight;
 
@@ -38,13 +40,13 @@ public class MemoryCreation : MonoBehaviour {
     void Update () {
         if(memoryTestBool)
         {
-            memoryObjects[0].walkByBlocks.StartMemory();
+            memoryObjects[memoryTestInt].walkByBlocks.StartMemory();
             memoryTestBool = false;
         }
 
         if(turnMemoryOff)
         {
-            memoryObjects[0].walkByBlocks.StopMemory(false);
+            memoryObjects[memoryTestInt].walkByBlocks.StopMemory(false);
             turnMemoryOff = false;
         }
 
