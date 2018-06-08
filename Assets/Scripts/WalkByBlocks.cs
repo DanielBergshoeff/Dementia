@@ -27,8 +27,6 @@ public class WalkByBlocks : MonoBehaviour {
     public float secondsBetweenMovement;
     private float timerMovement;
 
-    private AudioManager audioManager;
-
 
     private Vector3 locationBeforeMemory;
     private Quaternion rotationBeforeMemory;
@@ -49,6 +47,8 @@ public class WalkByBlocks : MonoBehaviour {
 
     private bool playMemory;
     private bool stopMemory;
+
+    public bool flyController;
 
     private GameObject currentWorld;
 
@@ -76,9 +76,7 @@ public class WalkByBlocks : MonoBehaviour {
         {
             blocks[tempnr] = child;
             tempnr++;
-        } */
-
-        audioManager = GameObject.Find("SoundSystems").GetComponent<AudioManager>();
+        } */        
     }
 	
 	// Update is called once per frame
@@ -148,8 +146,17 @@ public class WalkByBlocks : MonoBehaviour {
         playMemory = true;
         currentBlock = 0;
 
-        player.GetComponent<CharacterController>().enabled = false;
-        player.GetComponent<FlyController>().enabled = false;
+        if (flyController)
+        {
+            player.GetComponent<FlyController>().enabled = false;
+        }
+        else
+        {
+            player.GetComponent<CharacterController>().enabled = false;
+        }
+        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+        player.GetComponent<Rigidbody>().isKinematic = true;
 
         currentWorld.transform.parent = player.transform;
         player.transform.position = blocks[0].transform.position;
@@ -161,67 +168,68 @@ public class WalkByBlocks : MonoBehaviour {
         
         yield return new WaitForSeconds(3);
         
+
         cam.GetComponent<PostProcessingBehaviour>().profile = profileMemory;
 
         //PLAY AUDIO
         if(soundOutside != null)
         {
-            audioManager.audioOutside.clip = soundOutside;
-            audioManager.audioOutside.Play();
+            AudioManager.audioOutside.clip = soundOutside;
+            AudioManager.audioOutside.Play();
         }
 
         if (soundLivingRoom != null)
         {
-            audioManager.audioLivingRoom.clip = soundLivingRoom;
-            audioManager.audioLivingRoom.Play();
+            AudioManager.audioLivingRoom.clip = soundLivingRoom;
+            AudioManager.audioLivingRoom.Play();
         }
 
         if(soundOffice != null)
         {
-            audioManager.audioOffice.clip = soundOffice;
-            audioManager.audioOffice.Play();
+            AudioManager.audioOffice.clip = soundOffice;
+            AudioManager.audioOffice.Play();
         }
 
         if(soundBedRoom != null)
         {
-            audioManager.audioBedRoom.clip = soundBedRoom;
-            audioManager.audioBedRoom.Play();
+            AudioManager.audioBedRoom.clip = soundBedRoom;
+            AudioManager.audioBedRoom.Play();
         }
 
         if (soundHall != null)
         {
-            audioManager.audioHall.clip = soundHall;
-            audioManager.audioHall.Play();
+            AudioManager.audioHall.clip = soundHall;
+            AudioManager.audioHall.Play();
         }
 
         if (soundBathroom != null)
         {
-            audioManager.audioBathRoom.clip = soundBathroom;
-            audioManager.audioBathRoom.Play();
+            AudioManager.audioBathRoom.clip = soundBathroom;
+            AudioManager.audioBathRoom.Play();
         }
 
         if (soundKitchen != null)
         {
-            audioManager.audioKitchen.clip = soundKitchen;
-            audioManager.audioKitchen.Play();
+            AudioManager.audioKitchen.clip = soundKitchen;
+            AudioManager.audioKitchen.Play();
         }
 
         if (soundRadio != null)
         {
-            audioManager.audioRadio.clip = soundRadio;
-            audioManager.audioRadio.Play();
+            AudioManager.audioRadio.clip = soundRadio;
+            AudioManager.audioRadio.Play();
         }
 
         if (soundSelf != null)
         {
-            audioManager.audioSelf.clip = soundSelf;
-            audioManager.audioSelf.Play();
+            AudioManager.audioSelf.clip = soundSelf;
+            AudioManager.audioSelf.Play();
         }
 
         if(soundPhone != null)
         {
-            audioManager.audioPhone.clip = soundPhone;
-            audioManager.audioPhone.Play();
+            AudioManager.audioPhone.clip = soundPhone;
+            AudioManager.audioPhone.Play();
         }
     }
 
@@ -232,63 +240,63 @@ public class WalkByBlocks : MonoBehaviour {
         //TURN AUDIO OFF
         if (soundOutside != null)
         {
-            audioManager.audioOutside.Stop();
-            audioManager.audioOutside.clip = null;
+            AudioManager.audioOutside.Stop();
+            AudioManager.audioOutside.clip = null;
 
         }
 
         if (soundLivingRoom != null)
         {
-            audioManager.audioLivingRoom.Stop();
-            audioManager.audioLivingRoom.clip = null;
+            AudioManager.audioLivingRoom.Stop();
+            AudioManager.audioLivingRoom.clip = null;
         }
 
         if (soundOffice != null)
         {
-            audioManager.audioOffice.Stop();
-            audioManager.audioOffice.clip = null;
+            AudioManager.audioOffice.Stop();
+            AudioManager.audioOffice.clip = null;
         }
 
         if (soundBedRoom != null)
         {
-            audioManager.audioBedRoom.Stop();
-            audioManager.audioBedRoom.clip = null;
+            AudioManager.audioBedRoom.Stop();
+            AudioManager.audioBedRoom.clip = null;
         }
 
         if (soundHall != null)
         {
-            audioManager.audioHall.Stop();
-            audioManager.audioHall.clip = null;
+            AudioManager.audioHall.Stop();
+            AudioManager.audioHall.clip = null;
         }
 
         if (soundBathroom != null)
         {
-            audioManager.audioBathRoom.Stop();
-            audioManager.audioBathRoom.clip = null;
+            AudioManager.audioBathRoom.Stop();
+            AudioManager.audioBathRoom.clip = null;
         }
 
         if (soundKitchen != null)
         {
-            audioManager.audioKitchen.Stop();
-            audioManager.audioKitchen.clip = null;
+            AudioManager.audioKitchen.Stop();
+            AudioManager.audioKitchen.clip = null;
         }
 
         if (soundRadio != null)
         {
-            audioManager.audioRadio.Stop();
-            audioManager.audioRadio.clip = null;
+            AudioManager.audioRadio.Stop();
+            AudioManager.audioRadio.clip = null;
         }
 
         if (soundSelf != null)
         {
-            audioManager.audioSelf.Stop();
-            audioManager.audioSelf.clip = null;
+            AudioManager.audioSelf.Stop();
+            AudioManager.audioSelf.clip = null;
         }
 
         if(soundPhone != null)
         {
-            audioManager.audioPhone.Stop();
-            audioManager.audioPhone.clip = null;
+            AudioManager.audioPhone.Stop();
+            AudioManager.audioPhone.clip = null;
         }
 
         Debug.Log("Remove memory by dissolve");
@@ -297,11 +305,17 @@ public class WalkByBlocks : MonoBehaviour {
         yield return new WaitForSeconds(3);
         cam.GetComponent<PostProcessingBehaviour>().profile = profileCurrent;
         player.transform.position = locationBeforeMemory;
-        Debug.Log(player.transform.position);
         currentWorld.transform.position = worldPositionBeforeMemory;
-
-        player.GetComponent<CharacterController>().enabled = true;
-        player.GetComponent<FlyController>().enabled = true;
+        player.GetComponent<Rigidbody>().isKinematic = false;
+        if (flyController)
+        {
+            player.GetComponent<FlyController>().enabled = true;
+        }
+        else
+        {
+            player.GetComponent<CharacterController>().enabled = true;
+        }
+        
 
 
     }

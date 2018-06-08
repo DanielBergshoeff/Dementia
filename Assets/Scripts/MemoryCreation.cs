@@ -10,10 +10,18 @@ public class ObjectToMemory
     public WalkByBlocks walkByBlocks;
 }
 
+[System.Serializable]
+public class ObjectToAudio
+{
+    public GameObject objectToTrigger;
+    public AudioClip audioClip;
+}
+
 
 public class MemoryCreation : MonoBehaviour {
 
     public ObjectToMemory[] memoryObjects;
+    public ObjectToAudio[] audioObjects;
 
     public GameObject handLeft;
     public GameObject handRight;
@@ -26,14 +34,18 @@ public class MemoryCreation : MonoBehaviour {
     private GameObject itemHoldingLeft;
     private GameObject itemHoldingRight;
 
-    private Vector3 lastPosition;
-
     public bool memoryTestBool;
     public bool turnMemoryOff;
+
+    public bool[] startMemory;
+
+
+    public GameObject waterLine;
 
     // Use this for initialization
     void Start() {
         //memoryObjects[0].walkByBlocks.StartMemory();
+        startMemory = new bool[memoryObjects.Length];
     }
 
     // Update is called once per frame
@@ -41,6 +53,7 @@ public class MemoryCreation : MonoBehaviour {
         if(memoryTestBool)
         {
             memoryObjects[memoryTestInt].walkByBlocks.StartMemory();
+            MemoryStarted(memoryTestInt);
             memoryTestBool = false;
         }
 
@@ -88,17 +101,24 @@ public class MemoryCreation : MonoBehaviour {
                 itemHoldingRight = null;
             }
         }
+
+        if(startMemory[2] == true) {
+            if(waterLine.transform.position.y > -0.7f)
+            {
+                waterLine.transform.Translate(Vector3.down * Time.deltaTime * 0.05f, Space.World);
+            }
+        }
     }
 
     void CheckIfMemory(GameObject go)
     {
-        lastPosition = transform.position;
         foreach (ObjectToMemory otm in memoryObjects)
         {
             if (otm.memoryObject.name == go.name)
             {
                 Debug.Log("Start memory");
                 otm.walkByBlocks.StartMemory();
+                MemoryStarted(System.Array.IndexOf(memoryObjects, otm.memoryObject));
             }
         }
     }
@@ -113,5 +133,22 @@ public class MemoryCreation : MonoBehaviour {
                 otm.walkByBlocks.StopMemory(false);
             }
         }
+    }
+
+    void CheckIfOneLiner(GameObject go)
+    {
+        foreach(ObjectToAudio ota in audioObjects)
+        {
+            if(ota.objectToTrigger.name == go.name)
+            {
+                Debug.Log("Start audio");
+                AudioManager.PlayAudio(ota.audioClip);
+            }
+        }
+    }
+
+    void MemoryStarted(int index)
+    {
+        startMemory[index] = true;
     }
 }

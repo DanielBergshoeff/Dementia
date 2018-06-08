@@ -14,12 +14,18 @@ public class GlobalFlock : MonoBehaviour {
 
     public Vector3 goalPos = Vector3.zero;
 
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawCube(transform.position, new Vector3(tankSize.x * 2, tankSize.y * 2, tankSize.z * 2));
+        Gizmos.color = new Color(0, 1, 0, 1);
+        Gizmos.DrawSphere(goalPos, 0.1f);
+    }
+
     // Use this for initialization
     void Start() {
-        RenderSettings.fogColor = Camera.main.backgroundColor;
-        RenderSettings.fogDensity = 0.03f;
-        RenderSettings.fog = true;
 
+        goalPos = transform.position;
         allFish = new GameObject[numFish];
 
         for (int i = 0; i < numFish; i++)

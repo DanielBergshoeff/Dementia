@@ -43,11 +43,22 @@ public class Flock : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        Bounds b = new Bounds(globalFlock.transform.position, globalFlock.tankSize * 2);
+
+        if(!b.Contains(transform.position))
+        {
+            turning = true;
+        }
+        else
+        {
+            turning = false;
+        }
+
         if (currentState == FishState.SWIM)
         {
             if (turning)
             {
-                Vector3 direction = newGoalPos - transform.position;
+                Vector3 direction = globalFlock.transform.position - transform.position;
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), rotationSpeed * Time.deltaTime);
 
                 speed = Random.Range(minSpeed, maxSpeed);
@@ -80,6 +91,12 @@ public class Flock : MonoBehaviour {
 
     void ApplyRules()
     {
+        if (-globalFlock.tankSize.x < transform.position.x && transform.position.x < globalFlock.tankSize.x && -globalFlock.tankSize.y < transform.position.y && transform.position.y < globalFlock.tankSize.y && -globalFlock.tankSize.z < transform.position.z && transform.position.z < globalFlock.tankSize.z)
+        {
+            newGoalPos = this.transform.position;
+            turning = true;
+        }
+
         GameObject[] gos;
         gos = globalFlock.allFish;
 

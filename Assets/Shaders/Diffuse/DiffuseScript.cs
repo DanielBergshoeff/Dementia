@@ -18,7 +18,7 @@ public class DiffuseScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-          
+        myMaterial.SetVector("_StartingVector", startPosition);
     }
 	
 	// Update is called once per frame
@@ -50,7 +50,7 @@ public class DiffuseScript : MonoBehaviour {
 
     public void StartDissolve(Vector3 startVector)
     {
-        myMaterial.SetVector("_StartingVector", startVector);
+        //myMaterial.SetVector("_StartingVector", startVector);
         startDissolve = true;
     }
 
