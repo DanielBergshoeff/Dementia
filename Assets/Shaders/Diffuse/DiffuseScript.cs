@@ -14,11 +14,49 @@ public class DiffuseScript : MonoBehaviour {
 
     public float speedDissolve = 0.01f;
 
-    public Material myMaterial;
+    public GameObject parentOfAllMaterials;
 
-	// Use this for initialization
-	void Start () {
-        myMaterial.SetVector("_StartingVector", startPosition);
+    public List<Material> materials;
+
+    private Renderer[] renderers;
+
+    public Shader shader;
+
+    // Use this for initialization
+    void Start () {
+        renderers = parentOfAllMaterials.GetComponentsInChildren<Renderer>();
+        foreach(Renderer ren in renderers)
+        {
+            /*for (int i = 0; i < ren.materials.Length; i++)
+            {
+                Material newMat = new Material(ren.materials[i]);
+                newMat.name += "DIFFUSE";
+                newMat.shader = shader;
+
+                Debug.Log(ren.materials[i].name);
+
+                ren.materials[i] = (Material)Instantiate(newMat);
+
+                Debug.Log(ren.materials[i].name);
+
+                if (!materials.Contains(newMat))
+                {
+                    materials.Add(newMat);
+                }
+            }*/
+            for (int i = 0; i < ren.materials.Length; i++)
+            {
+                ren.materials[i].shader = shader;
+            }
+        }      
+        
+        foreach (Renderer ren in renderers)
+        {
+            for (int i = 0; i < ren.materials.Length; i++)
+            {
+                ren.materials[i].SetVector("_StartingVector", startPosition);            
+            }
+        }
     }
 	
 	// Update is called once per frame
@@ -44,8 +82,14 @@ public class DiffuseScript : MonoBehaviour {
         }
 
         sizeDissolve = (timesFactor * sizeSlice);
-        myMaterial.SetFloat("_DissolveSize", sizeDissolve);
-        myMaterial.SetFloat("_SliceAmount", sizeSlice);
+        foreach (Renderer ren in renderers)
+        {
+            for (int i = 0; i < ren.materials.Length; i++)
+            {
+                ren.materials[i].SetFloat("_DissolveSize", sizeDissolve);
+                ren.materials[i].SetFloat("_SliceAmount", sizeSlice);
+            }
+        }
     }
 
     public void StartDissolve(Vector3 startVector)
