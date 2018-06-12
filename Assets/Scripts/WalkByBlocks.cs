@@ -9,7 +9,6 @@ public class WalkByBlocks : MonoBehaviour {
     public PostProcessingProfile profileMemory;
 
     public GameObject moveBlocks;
-    public GameObject lookDirectionBlocks;
 
     public AudioClip soundOutside;
     public AudioClip soundLivingRoom;
@@ -169,7 +168,7 @@ public class WalkByBlocks : MonoBehaviour {
         yield return new WaitForSeconds(3);
         
 
-        cam.GetComponent<PostProcessingBehaviour>().profile = profileMemory;
+        //cam.GetComponent<PostProcessingBehaviour>().profile = profileMemory;
 
         //PLAY AUDIO
         if(soundOutside != null)
@@ -303,7 +302,7 @@ public class WalkByBlocks : MonoBehaviour {
 
         diffuseScript.StartDissolve(player.transform.position);
         yield return new WaitForSeconds(3);
-        cam.GetComponent<PostProcessingBehaviour>().profile = profileCurrent;
+        //cam.GetComponent<PostProcessingBehaviour>().profile = profileCurrent;
         player.transform.position = locationBeforeMemory;
         currentWorld.transform.position = worldPositionBeforeMemory;
         player.GetComponent<Rigidbody>().isKinematic = false;

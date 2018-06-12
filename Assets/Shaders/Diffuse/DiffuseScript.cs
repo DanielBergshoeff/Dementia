@@ -10,6 +10,8 @@ public class DiffuseScript : MonoBehaviour {
     public float timesFactor = 3.0f;
     public bool startDissolve;
 
+    public Texture textureDissolve;
+
     public Vector3 startPosition;
 
     public float speedDissolve = 0.01f;
@@ -54,7 +56,8 @@ public class DiffuseScript : MonoBehaviour {
         {
             for (int i = 0; i < ren.materials.Length; i++)
             {
-                ren.materials[i].SetVector("_StartingVector", startPosition);            
+                ren.materials[i].SetVector("_StartingVector", startPosition);
+                ren.materials[i].SetTexture("_DissolveTexture", textureDissolve);
             }
         }
     }
