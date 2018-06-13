@@ -147,6 +147,8 @@ public class WalkByBlocks : MonoBehaviour {
         cam.gameObject.GetComponent<AudioListener>().enabled = false;
         camMemory.gameObject.GetComponent<AudioListener>().enabled = true;
 
+        AudioManager.audioSelf = camMemory.GetComponent<AudioSource>();
+
         playMemory = true;
         currentBlock = 0;
 
@@ -162,13 +164,13 @@ public class WalkByBlocks : MonoBehaviour {
 
         player.GetComponent<Rigidbody>().isKinematic = true;
 
-        currentWorld.transform.parent = player.transform;
+        /*currentWorld.transform.parent = player.transform;
         player.transform.position = blocks[0].transform.position;
 
-        currentWorld.transform.parent = null;
+        currentWorld.transform.parent = null;*/
 
 
-        diffuseScript.StopDissolve();
+        diffuseScript.StartDissolve(player.transform.position);
         
         yield return new WaitForSeconds(3);
         
@@ -305,11 +307,12 @@ public class WalkByBlocks : MonoBehaviour {
 
         Debug.Log("Remove memory by dissolve");
 
-        diffuseScript.StartDissolve(player.transform.position);
+        diffuseScript.StopDissolve();
         yield return new WaitForSeconds(3);
         //cam.GetComponent<PostProcessingBehaviour>().profile = profileCurrent;
+        /*
         player.transform.position = locationBeforeMemory;
-        currentWorld.transform.position = worldPositionBeforeMemory;
+        currentWorld.transform.position = worldPositionBeforeMemory; */
         player.GetComponent<Rigidbody>().isKinematic = false;
         if (flyController)
         {
@@ -323,6 +326,7 @@ public class WalkByBlocks : MonoBehaviour {
         cam.gameObject.GetComponent<AudioListener>().enabled = true;
         camMemory.gameObject.GetComponent<AudioListener>().enabled = false;
 
+        AudioManager.audioSelf = cam.GetComponent<AudioSource>();
     }
 
 }

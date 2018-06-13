@@ -69,7 +69,8 @@ public class MemoryCreation : MonoBehaviour {
             if(handLeft.GetComponent<OVRGrabber>().grabbedObject != null)
             {
                 itemHoldingLeft = handLeft.GetComponent<OVRGrabber>().grabbedObject.gameObject;
-                CheckIfMemory(itemHoldingLeft);                
+                CheckIfMemory(itemHoldingLeft);
+                CheckIfOneLiner(itemHoldingLeft);
                 holdingLeft = true;
             }
         }
@@ -89,6 +90,7 @@ public class MemoryCreation : MonoBehaviour {
             {
                 itemHoldingRight = handRight.GetComponent<OVRGrabber>().grabbedObject.gameObject;
                 CheckIfMemory(itemHoldingRight);
+                CheckIfOneLiner(itemHoldingRight);
                 holdingRight = true;
             }
         }
