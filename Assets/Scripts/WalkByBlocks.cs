@@ -44,6 +44,8 @@ public class WalkByBlocks : MonoBehaviour {
 
     private Camera cam;
 
+    public Camera camMemory;
+
     private bool playMemory;
     private bool stopMemory;
 
@@ -141,7 +143,10 @@ public class WalkByBlocks : MonoBehaviour {
 
 
     IEnumerator TriggerShader()
-    {       
+    {
+        cam.gameObject.GetComponent<AudioListener>().enabled = false;
+        camMemory.gameObject.GetComponent<AudioListener>().enabled = true;
+
         playMemory = true;
         currentBlock = 0;
 
@@ -314,8 +319,9 @@ public class WalkByBlocks : MonoBehaviour {
         {
             player.GetComponent<CharacterController>().enabled = true;
         }
-        
 
+        cam.gameObject.GetComponent<AudioListener>().enabled = true;
+        camMemory.gameObject.GetComponent<AudioListener>().enabled = false;
 
     }
 
