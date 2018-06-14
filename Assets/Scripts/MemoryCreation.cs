@@ -39,6 +39,8 @@ public class MemoryCreation : MonoBehaviour {
 
     public bool[] startMemory;
 
+    public int currentMaxMemory;
+
 
     public GameObject waterLine;
 
@@ -46,6 +48,7 @@ public class MemoryCreation : MonoBehaviour {
     void Start() {
         //memoryObjects[0].walkByBlocks.StartMemory();
         startMemory = new bool[memoryObjects.Length];
+        currentMaxMemory = 1;
     }
 
     // Update is called once per frame
@@ -103,13 +106,14 @@ public class MemoryCreation : MonoBehaviour {
                 itemHoldingRight = null;
             }
         }
+        
 
         if(startMemory[2] == true) {
             if(waterLine.transform.position.y > -0.7f)
             {
                 waterLine.transform.Translate(Vector3.down * Time.deltaTime * 0.05f, Space.World);
             }
-        }
+        } 
     }
 
     void CheckIfMemory(GameObject go)
@@ -118,9 +122,18 @@ public class MemoryCreation : MonoBehaviour {
         {
             if (otm.memoryObject.name == go.name)
             {
-                Debug.Log("Start memory");
-                otm.walkByBlocks.StartMemory();
-                MemoryStarted(System.Array.IndexOf(memoryObjects, otm.memoryObject));
+                int memInt = System.Array.IndexOf(memoryObjects, otm);
+                if (memInt < currentMaxMemory)
+                {
+                    if(memInt + 1 == currentMaxMemory)
+                    {
+                        currentMaxMemory++;
+                    }
+                    Debug.Log("Start memory");
+                    otm.walkByBlocks.StartMemory();
+                    
+                }                
+                MemoryStarted(System.Array.IndexOf(memoryObjects, otm));
             }
         }
     }

@@ -99,9 +99,9 @@ public class WalkByBlocks : MonoBehaviour {
     {
         if (Time.time > timerMovement)
         {
-            player.transform.position = Vector3.MoveTowards(player.transform.position, blocks[currentBlock].transform.position, speed * Time.deltaTime);
+            camMemory.transform.position = Vector3.MoveTowards(camMemory.transform.position, blocks[currentBlock].transform.position, speed * Time.deltaTime);
 
-            if (Vector3.Distance(player.transform.position, blocks[currentBlock].transform.position) < 0.1f)
+            if (Vector3.Distance(camMemory.transform.position, blocks[currentBlock].transform.position) < 0.1f)
             {
                 currentBlock++;
                 timerMovement = Time.time + secondsBetweenMovement;
@@ -144,8 +144,12 @@ public class WalkByBlocks : MonoBehaviour {
 
     IEnumerator TriggerShader()
     {
+        camMemory.enabled = true;
+
         cam.gameObject.GetComponent<AudioListener>().enabled = false;
         camMemory.gameObject.GetComponent<AudioListener>().enabled = true;
+
+        camMemory.transform.parent.transform.position = blocks[0].transform.position;
 
         AudioManager.audioSelf = camMemory.GetComponent<AudioSource>();
 
@@ -237,10 +241,14 @@ public class WalkByBlocks : MonoBehaviour {
             AudioManager.audioPhone.clip = soundPhone;
             AudioManager.audioPhone.Play();
         }
+
+        cam.gameObject.SetActive(false);
     }
 
     IEnumerator TriggerShaderOff()
     {
+        cam.gameObject.SetActive(true);
+
         playMemory = false;
 
         //TURN AUDIO OFF
@@ -327,6 +335,8 @@ public class WalkByBlocks : MonoBehaviour {
         camMemory.gameObject.GetComponent<AudioListener>().enabled = false;
 
         AudioManager.audioSelf = cam.GetComponent<AudioSource>();
+
+        camMemory.enabled = false;
     }
 
 }
