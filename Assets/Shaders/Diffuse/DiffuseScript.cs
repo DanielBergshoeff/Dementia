@@ -60,6 +60,8 @@ public class DiffuseScript : MonoBehaviour {
                 ren.materials[i].SetTexture("_DissolveTexture", textureDissolve);
             }
         }
+
+        this.enabled = false;
     }
 	
 	// Update is called once per frame

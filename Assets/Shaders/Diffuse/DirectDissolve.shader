@@ -13,6 +13,8 @@
 
 		_StartingY("Starting point", float) = 0.0
 
+		_Speed("Dissolve speed", float) = 0.05
+
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" }

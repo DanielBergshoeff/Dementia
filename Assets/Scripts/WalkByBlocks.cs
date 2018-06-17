@@ -47,20 +47,28 @@ public class WalkByBlocks : MonoBehaviour {
     public Camera camMemory;
 
     private bool playMemory;
-    private bool stopMemory;
+    public bool stopMemory;
 
     public bool flyController;
 
-    private GameObject currentWorld;
+    public GameObject currentWorld;
+    public GameObject memoryWorld;
 
     private GameObject player;
+
+    private MemoryCreation memCreation;
+
+    private bool currentlyTriggering;
+    private bool currentlyStopping;
+    public bool forcedStop;
 
 	// Use this for initialization
 	void Start () {
         cam = GameObject.Find("CenterEyeAnchor").GetComponent<Camera>();
         player = GameObject.Find("OVRPlayerController");
+        memCreation = GameObject.Find("MemoryManager").GetComponent<MemoryCreation>();
 
-        currentWorld = GameObject.Find("CurrentWorld");
+        memoryWorld.SetActive(false);
 
         playMemory = false;
         currentBlock = 0;
@@ -70,14 +78,7 @@ public class WalkByBlocks : MonoBehaviour {
         for (int i = 0; i < moveBlocks.transform.childCount; i++)
         {
             blocks[i] = moveBlocks.transform.GetChild(i);
-        }
-
-        //int tempnr = 0;
-        /* foreach(Transform child in moveBlocks.transform)
-        {
-            blocks[tempnr] = child;
-            tempnr++;
-        } */        
+        }        
     }
 	
 	// Update is called once per frame
@@ -87,10 +88,22 @@ public class WalkByBlocks : MonoBehaviour {
             if(blocks.Length <= currentBlock)
             {
                 stopMemory = true;
-                StopMemory(true);
             }
             else{
                 MoveToNextBlock();
+            }
+        }
+
+        if(stopMemory && !currentlyStopping && !currentlyTriggering)
+        {
+            if (forcedStop)
+            {
+                StopMemory(false);
+                forcedStop = false;
+            }
+            else
+            {
+                StopMemory(true);
             }
         }
 	}
@@ -99,9 +112,9 @@ public class WalkByBlocks : MonoBehaviour {
     {
         if (Time.time > timerMovement)
         {
-            camMemory.transform.position = Vector3.MoveTowards(camMemory.transform.position, blocks[currentBlock].transform.position, speed * Time.deltaTime);
+            camMemory.transform.parent.position = Vector3.MoveTowards(camMemory.transform.parent.position, blocks[currentBlock].transform.position, speed * Time.deltaTime);
 
-            if (Vector3.Distance(camMemory.transform.position, blocks[currentBlock].transform.position) < 0.1f)
+            if (Vector3.Distance(camMemory.transform.parent.position, blocks[currentBlock].transform.position) < 0.1f)
             {
                 currentBlock++;
                 timerMovement = Time.time + secondsBetweenMovement;
@@ -111,10 +124,13 @@ public class WalkByBlocks : MonoBehaviour {
 
     public void StartMemory()
     {
-        worldPositionBeforeMemory = currentWorld.transform.position;
-        locationBeforeMemory = player.transform.position;
-        rotationBeforeMemory = player.transform.rotation;
-        StartCoroutine(TriggerShader());
+        if (!currentlyTriggering && !currentlyStopping)
+        {
+            worldPositionBeforeMemory = currentWorld.transform.position;
+            locationBeforeMemory = player.transform.position;
+            rotationBeforeMemory = player.transform.rotation;
+            StartCoroutine(TriggerShader());
+        }
     }
 
     public void StopMemory(bool afterDuration)
@@ -135,7 +151,7 @@ public class WalkByBlocks : MonoBehaviour {
     IEnumerator MemoryDuration(float amtOfTime)
     {
         yield return new WaitForSeconds(amtOfTime);
-        if (playMemory)
+        if (playMemory && stopMemory && !currentlyStopping)
         {
             StartCoroutine(TriggerShaderOff());
         }
@@ -144,11 +160,14 @@ public class WalkByBlocks : MonoBehaviour {
 
     IEnumerator TriggerShader()
     {
+        currentlyTriggering = true;
+
+        memoryWorld.SetActive(true);
         camMemory.enabled = true;
 
         cam.gameObject.GetComponent<AudioListener>().enabled = false;
         camMemory.gameObject.GetComponent<AudioListener>().enabled = true;
-
+        camMemory.GetComponent<PostProcessingBehaviour>().profile = profileMemory;
         camMemory.transform.parent.transform.position = blocks[0].transform.position;
 
         AudioManager.audioSelf = camMemory.GetComponent<AudioSource>();
@@ -168,18 +187,12 @@ public class WalkByBlocks : MonoBehaviour {
 
         player.GetComponent<Rigidbody>().isKinematic = true;
 
-        /*currentWorld.transform.parent = player.transform;
-        player.transform.position = blocks[0].transform.position;
+        diffuseScript.enabled = true;
 
-        currentWorld.transform.parent = null;*/
-
-
+        Debug.Log("Start memory by dissolve");
         diffuseScript.StartDissolve(player.transform.position);
         
         yield return new WaitForSeconds(3);
-        
-
-        //cam.GetComponent<PostProcessingBehaviour>().profile = profileMemory;
 
         //PLAY AUDIO
         if(soundOutside != null)
@@ -243,10 +256,18 @@ public class WalkByBlocks : MonoBehaviour {
         }
 
         cam.gameObject.SetActive(false);
+        currentWorld.SetActive(false);
+
+        currentlyTriggering = false;
     }
 
     IEnumerator TriggerShaderOff()
     {
+        stopMemory = false;
+
+        currentlyStopping = true;
+
+        currentWorld.SetActive(true);
         cam.gameObject.SetActive(true);
 
         playMemory = false;
@@ -317,10 +338,7 @@ public class WalkByBlocks : MonoBehaviour {
 
         diffuseScript.StopDissolve();
         yield return new WaitForSeconds(3);
-        //cam.GetComponent<PostProcessingBehaviour>().profile = profileCurrent;
-        /*
-        player.transform.position = locationBeforeMemory;
-        currentWorld.transform.position = worldPositionBeforeMemory; */
+
         player.GetComponent<Rigidbody>().isKinematic = false;
         if (flyController)
         {
@@ -336,7 +354,14 @@ public class WalkByBlocks : MonoBehaviour {
 
         AudioManager.audioSelf = cam.GetComponent<AudioSource>();
 
+        yield return new WaitForSeconds(2);
         camMemory.enabled = false;
+        memoryWorld.SetActive(false);
+        diffuseScript.enabled = false;
+
+        memCreation.EndMemory();
+        
+        currentlyStopping = false;
     }
 
 }

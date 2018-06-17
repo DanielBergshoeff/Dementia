@@ -21,6 +21,7 @@ limitations under the License.
 
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Allows grabbing and throwing of objects with the OVRGrabbable component on them.
@@ -67,6 +68,9 @@ public class OVRGrabber : MonoBehaviour
 	protected Dictionary<OVRGrabbable, int> m_grabCandidates = new Dictionary<OVRGrabbable, int>();
 	protected bool operatingWithoutOVRCameraRig = true;
 
+    private static bool gameStarted;
+    private MemoryCreation memCreation;
+
     /// <summary>
     /// The currently grabbed object.
     /// </summary>
@@ -107,6 +111,10 @@ public class OVRGrabber : MonoBehaviour
 
     protected virtual void Start()
     {
+        if(gameStarted)
+        {
+            memCreation = GameObject.Find("MemoryManager").GetComponent<MemoryCreation>();
+        }
         m_lastPos = transform.position;
         m_lastRot = transform.rotation;
         if(m_parentTransform == null)
@@ -128,6 +136,19 @@ public class OVRGrabber : MonoBehaviour
 	{
 		if (operatingWithoutOVRCameraRig)
 			OnUpdatedAnchors();
+
+        if(grabbedObject != null)
+        {
+            if(grabbedObject.name == "StartGameSphere")
+            {
+                gameStarted = true;
+                SceneManager.LoadScene(1);
+            }
+            else if(grabbedObject.name == "phoneNumbersNote")
+            {
+                StartCoroutine(memCreation.EndGame());
+            }
+        }
 	}
 
     // Hands follow the touch anchors by calling MovePosition each frame to reach the anchor.
@@ -166,8 +187,14 @@ public class OVRGrabber : MonoBehaviour
 
     void OnTriggerEnter(Collider otherCollider)
     {
+        if (gameStarted)
+        {
+            Debug.Log("Touching " + otherCollider.name);
+            memCreation.CheckIfOneLiner(otherCollider.gameObject);
+        }
+
         // Get the grab trigger
-		OVRGrabbable grabbable = otherCollider.GetComponent<OVRGrabbable>() ?? otherCollider.GetComponentInParent<OVRGrabbable>();
+        OVRGrabbable grabbable = otherCollider.GetComponent<OVRGrabbable>() ?? otherCollider.GetComponentInParent<OVRGrabbable>();
         if (grabbable == null) return;
 
         // Add the grabbable
