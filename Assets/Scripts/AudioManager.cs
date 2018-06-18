@@ -28,6 +28,15 @@ public class AudioManager : MonoBehaviour {
 
     public static AudioSource audioSelf;
 
+    private static bool selfAudio;
+
+    private static AudioManager audioManager;
+
+    void Awake()
+    {
+        audioManager = this;
+    }
+
 	// Use this for initialization
 	void Start () {
         audioOutside = audioOutsideObject.GetComponent<AudioSource>();
@@ -49,7 +58,23 @@ public class AudioManager : MonoBehaviour {
 
     public static void PlayAudio(AudioClip clip)
     {
+        if (!selfAudio)
+        {
+            Debug.Log("Sending to enumerator");
+            audioManager.StartCoroutine(PlayAudioSelf(clip));
+        }
+    }
+
+    static IEnumerator PlayAudioSelf(AudioClip clip)
+    {
+        selfAudio = true;
         audioSelf.clip = clip;
         audioSelf.Play();
+
+        Debug.Log("Playing " + audioSelf.clip.name);
+
+        yield return new WaitForSeconds(clip.length);
+
+        selfAudio = false;
     }
 }
